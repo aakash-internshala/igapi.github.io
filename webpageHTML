@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Instagram API Login Test</title>
+  <style>
+    /* Basic CSS styles for the login button */
+    .instagram-login-btn {
+      display: inline-block;
+      background: #405de6;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Instagram API Login Test</h1>
+  <p>Click the button below to log in with your Instagram account:</p>
+  <a class="instagram-login-btn" href="https://api.instagram.com/oauth/authorize/?client_id=YOUR_CLIENT_ID&redirect_uri=YOUR_REDIRECT_URI&response_type=token">Login with Instagram</a>
+
+  <script>
+    // Handle the callback after successful login
+    function handleInstagramLogin(accessToken) {
+      // You can perform further actions here, such as storing the access token or redirecting the user
+      console.log('Access Token:', accessToken);
+    }
+
+    // Extract the access token from the URL hash
+    function getAccessTokenFromHash() {
+      var hash = window.location.hash.substr(1);
+      var params = new URLSearchParams(hash);
+      return params.get('access_token');
+    }
+
+    // Check if the URL contains an access token
+    var accessToken = getAccessTokenFromHash();
+    if (accessToken) {
+      handleInstagramLogin(accessToken);
+    }
+  </script>
+</body>
+</html>
