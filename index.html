@@ -5,9 +5,18 @@
 </head>
 <body>
   <h1>Instagram API Test</h1>
+  <button onclick="authenticateInstagram()">Authenticate with Instagram</button>
   <button onclick="getInstagramData()">Get Instagram Data</button>
   
   <script>
+    function authenticateInstagram() {
+      // Replace 'CLIENT_ID' with your actual App ID (Client ID)
+      const clientId = 'CLIENT_ID';
+      
+      // Redirect the user to Instagram's authorization endpoint
+      window.location.href = `https://api.instagram.com/oauth/authorize?client_id=${clientId}&redirect_uri=https://your-username.github.io/repository-name/callback&scope=user_profile&response_type=token`;
+    }
+    
     function getInstagramData() {
       // Replace 'ACCESS_TOKEN' with the actual user access token obtained from the authentication process
       const accessToken = 'ACCESS_TOKEN';
